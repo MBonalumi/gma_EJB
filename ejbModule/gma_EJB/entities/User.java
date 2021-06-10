@@ -1,38 +1,79 @@
 package gma_EJB.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
 @Table(name="user", schema="gma_db")
 //TODO: @NamedQuery
-
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	//attributes
+	//table attributes
 	@Id
-	int idU;
-	String username;
-	String email;
-	String psw;
-	Boolean ban;
-	int points;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idU;
+	@Column(name="username", nullable=false)
+	private String username;
+	@Column(name="email", nullable=false)
+	private String email;
+	@Column(name="psw", nullable=false)
+	private String psw;
+	private Boolean ban=false;
+	private int points=0;
+	
+	
+	//other attributes
+	@OneToMany(mappedBy="idU")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	Collection<LoginHistory> logins;
+	@OneToMany(mappedBy="idU")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	Collection<MktAnswer> mktAnswers;
+	@OneToMany(mappedBy="idU")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	Collection<StatAnswers> statAnswers;
+	
 	
 	//constructor
 	public User() {	}
-	
-	//getters & setters
-	public String getUsername() {		return username;	}
-	public void setUsername(String username) {		this.username = username;	}
 
-	public String getPassword() {		return psw;	}
-	public void setPassword(String psw) {		this.psw = psw;	}
 	
-	public String getEmail() {		return email;	}
-	public void setEmail(String email) {		this.email = email;	}
-
-	public Boolean getAdmin() {		return ban;	}
-	public void setAdmin(Boolean ban) {		this.ban = ban;	}
+	//getters&setters
+	public int getIdU() {
+		return idU;
+	}
+	public void setIdU(int idU) {
+		this.idU = idU;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPsw() {
+		return psw;
+	}
+	public void setPsw(String psw) {
+		this.psw = psw;
+	}
+	public Boolean getBan() {
+		return ban;
+	}
+	public void setBan(Boolean ban) {
+		this.ban = ban;
+	}
+	public int getPoints() {
+		return points;
+	}
+	public void setPoints(int points) {
+		this.points = points;
+	}
+	
 	
 }
