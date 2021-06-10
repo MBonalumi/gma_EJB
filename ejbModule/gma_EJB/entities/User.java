@@ -17,6 +17,7 @@ public class User implements Serializable{
 	String email;
 	String psw;
 	Boolean ban;
+	int points;
 	
 	//constructor
 	public User() {	}
