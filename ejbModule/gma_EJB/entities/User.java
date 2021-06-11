@@ -7,6 +7,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="user", schema="gma_db")
 //TODO: @NamedQuery
+@NamedQuery(name="User.checkCredentials", query="SELECT x FROM User x WHERE x.username = ?1 AND x.psw = ?2")
+
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -14,9 +16,9 @@ public class User implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idU;
-	@Column(name="username", nullable=false)
+	@Column(name="username", nullable=false, unique=true)
 	private String username;
-	@Column(name="email", nullable=false)
+	@Column(name="email", nullable=false, unique=true)
 	private String email;
 	@Column(name="psw", nullable=false)
 	private String psw;
