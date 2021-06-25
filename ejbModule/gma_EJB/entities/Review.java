@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="review", schema="gma_db")
 //TODO: @NamedQuery
-
+@NamedQuery(name="Review.getReviews", query="SELECT x FROM Review x, Product y WHERE x.idP=y AND y.idP=?1")
 public class Review implements Serializable{
 	private static final long serialVersionUID = 1L;
 

@@ -1,7 +1,5 @@
 package gma_EJB.services;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -16,6 +14,12 @@ public class UserService {
 	
 	public UserService() {}
 	
+	//DEBUG
+//	@EJB(name="gma_EJB.services/ReviewService")
+//	ReviewService rServ;
+//	@EJB(name="gma_EJB.services/QuestionnaireService")
+//	QuestionnaireService qServ;
+	
 	/*
 	 * RETURN:
 	 * 		User	if checked correctly
@@ -29,6 +33,9 @@ public class UserService {
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't check credentials");
 		}
+		
+		//DEBUG
+//		System.out.println(rServ.getReviews(1).get(0).getText());
 		
 		if(users.isEmpty())
 			return null;
