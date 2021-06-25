@@ -16,7 +16,7 @@ public class LoginHistory implements Serializable {
 	@Id
 	@ManyToOne
 	@JoinColumn(name="idU")
-	private int idU;
+	private User idU;
 	@Id
 	@Column(name="ts", nullable=false)
 	private Timestamp ts;
@@ -29,10 +29,10 @@ public class LoginHistory implements Serializable {
 	
 	
 	//getters setters
-	public int getIdU() {
+	public User getIdU() {
 		return idU;
 	}
-	public void setIdU(int idU) {
+	public void setIdU(User idU) {
 		this.idU = idU;
 	}
 	public Timestamp getTs() {

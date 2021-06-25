@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
-	<persistence-unit name="gma_EJB">
-		<class>gma_EJB.entities.User</class>
-		<class>gma_EJB.entities.Product</class>
-		<class>gma_EJB.entities.Review</class>
+	<persistence-unit name="gma_EJB" transaction-type="JTA">
+		<jta-data-source>gma_db</jta-data-source>
 		<class>gma_EJB.entities.LoginHistory</class>
-		<class>gma_EJB.entities.Questionnaire</class>
+		<class>gma_EJB.entities.MktAnswer</class>
 		<class>gma_EJB.entities.MktQuestion</class>
 		<class>gma_EJB.entities.OffensiveWords</class>
-		<class>gma_EJB.entities.MktAnswer</class>
+		<class>gma_EJB.entities.Product</class>
+		<class>gma_EJB.entities.Questionnaire</class>
+		<class>gma_EJB.entities.Review</class>
 		<class>gma_EJB.entities.StatAnswers</class>
+		<class>gma_EJB.entities.User</class>
+		<properties>
+			<property name="eclipselink.logging.level" value="FINE"/>
+		</properties>
 	</persistence-unit>
 </persistence>

@@ -27,11 +27,11 @@ public class User implements Serializable{
 	
 	
 	//other attributes
-	@OneToMany(mappedBy="idU")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<LoginHistory> logins;
-	@OneToMany(mappedBy="idU")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<MktAnswer> mktAnswers;
-	@OneToMany(mappedBy="idU")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<StatAnswers> statAnswers;
 	
 	

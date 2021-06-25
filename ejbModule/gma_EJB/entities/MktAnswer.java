@@ -14,11 +14,11 @@ public class MktAnswer implements Serializable{
 	@Id
 	@ManyToOne
 	@JoinColumn(name="idM")
-	private int idM;		//TODO: may need @Column(nullable=false)
+	private MktQuestion idM;		//TODO: may need @Column(nullable=false)
 	@Id
 	@ManyToOne
 	@JoinColumn(name="idU")
-	private int idU;		//TODO: may need @Column(nullable=false)
+	private User idU;		//TODO: may need @Column(nullable=false)
 	@Column(name="text", nullable=false)
 	private String text;
 	
@@ -28,16 +28,16 @@ public class MktAnswer implements Serializable{
 	
 	
 	//getters setters
-	public int getIdM() {
+	public MktQuestion getIdM() {
 		return idM;
 	}
-	public void setIdM(int idM) {
+	public void setIdM(MktQuestion idM) {
 		this.idM = idM;
 	}
-	public int getIdU() {
+	public User getIdU() {
 		return idU;
 	}
-	public void setIdU(int idU) {
+	public void setIdU(User idU) {
 		this.idU = idU;
 	}
 	public String getText() {

@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="product", schema="gma_db")
 //TODO: @NamedQuery
+@NamedQuery(name="Product.getProduct", query="SELECT x FROM Product x WHERE x = ANY(SELECT y.idP FROM Questionnaire y WHERE y.date=?1)")
 public class Product implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -21,9 +22,9 @@ public class Product implements Serializable{
 	
 	
 	//other attributes (jpa, FK)
-	@OneToMany(mappedBy="idP")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<Review> reviews;
-	@OneToMany(mappedBy="idP")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<Questionnaire> questionnaires;
 	
 	

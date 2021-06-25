@@ -17,7 +17,7 @@ public class Review implements Serializable{
 	private String text;
 	@ManyToOne
 	@JoinColumn(name="idP")
-	private int idP;
+	private Product idP;
 	
 	
 	//constructor
@@ -37,10 +37,10 @@ public class Review implements Serializable{
 	public void setText(String text) {
 		this.text = text;
 	}
-	public int getIdP() {
+	public Product getIdP() {
 		return idP;
 	}
-	public void setIdP(int idP) {
+	public void setIdP(Product idP) {
 		this.idP = idP;
 	}
 }

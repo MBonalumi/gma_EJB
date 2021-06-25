@@ -14,11 +14,11 @@ public class StatAnswers implements Serializable{
 	@Id
 	@ManyToOne
 	@JoinColumn(name="idU")
-	private int idU;
+	private User idU;
 	@Id
 	@ManyToOne
 	@JoinColumn(name="idQ")
-	private int idQ;
+	private Questionnaire idQ;
 	private int age;
 	private int sex;		//TODO: html must transalte enum-->int
 	private int expertise;		//TODO: html must transalte enum-->int
@@ -29,16 +29,16 @@ public class StatAnswers implements Serializable{
 	
 	
 	//getters setters
-	public int getIdU() {
+	public User getIdU() {
 		return idU;
 	}
-	public void setIdU(int idU) {
+	public void setIdU(User idU) {
 		this.idU = idU;
 	}
-	public int getIdQ() {
+	public Questionnaire getIdQ() {
 		return idQ;
 	}
-	public void setIdQ(int idQ) {
+	public void setIdQ(Questionnaire idQ) {
 		this.idQ = idQ;
 	}
 	public int getAge() {

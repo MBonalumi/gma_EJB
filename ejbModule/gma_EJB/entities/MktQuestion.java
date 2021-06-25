@@ -18,7 +18,7 @@ public class MktQuestion implements Serializable{
 	String text;
 	@ManyToOne
 	@JoinColumn(name="idQ")
-	private int idQ;
+	private Questionnaire idQ;
 	
 	
 	//other attr
@@ -45,10 +45,10 @@ public class MktQuestion implements Serializable{
 	public void setText(String text) {
 		this.text = text;
 	}
-	public int getIdQ() {
+	public Questionnaire getIdQ() {
 		return idQ;
 	}
-	public void setIdQ(int idQ) {
+	public void setIdQ(Questionnaire idQ) {
 		this.idQ = idQ;
 	}
 	

@@ -20,13 +20,13 @@ public class Questionnaire implements Serializable{
 	private String title="title";
 	@ManyToOne
 	@JoinColumn(name="idP")
-	private int idP;
+	private Product idP;
 	
 	
 	//other attr (jpa FK)
-	@OneToMany(mappedBy="idQ")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<MktQuestion> mktQuestions;
-	@OneToMany(mappedBy="idQ")	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<StatAnswers> statAnswers;
 	
 	
@@ -53,10 +53,10 @@ public class Questionnaire implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getIdP() {
+	public Product getIdP() {
 		return idP;
 	}
-	public void setIdP(int idP) {
+	public void setIdP(Product idP) {
 		this.idP = idP;
 	}
 	

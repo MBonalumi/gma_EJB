@@ -1,7 +1,6 @@
 package gma_EJB.services;
 
 import java.util.List;
-
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import gma_EJB.entities.User;
@@ -35,12 +34,13 @@ public class UserService {
 					.setParameter("username", user);
 		List<User> users = null;
 		try {
-			users = checkUser.getResultList();
+			List<User> resultList = checkUser.getResultList();
+			users = resultList;
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't check credentials");
 		}
 		
-		if(users != null)
+		if(!users.isEmpty())
 			return -1;	//returns -1 as error === user already exists!
 		
 		//add user and return 1, i.e. success
