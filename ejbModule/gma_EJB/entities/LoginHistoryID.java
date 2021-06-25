@@ -1,16 +1,16 @@
 package gma_EJB.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class LoginHistoryID implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private int idU;
-	private Timestamp ts;
+	private Date ts;
 	
 	public LoginHistoryID() {}
-	public LoginHistoryID(int idU, Timestamp ts) {
+	public LoginHistoryID(int idU, Date ts) {
 		this.idU = idU;
 		this.ts = ts;
 	}
@@ -21,10 +21,10 @@ public class LoginHistoryID implements Serializable{
 	public void setIdU(int idU) {
 		this.idU = idU;
 	}
-	public Timestamp getTs() {
+	public Date getTs() {
 		return ts;
 	}
-	public void setTs(Timestamp ts) {
+	public void setTs(Date ts) {
 		this.ts = ts;
 	}
 	

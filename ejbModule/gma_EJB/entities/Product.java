@@ -1,13 +1,14 @@
 package gma_EJB.entities;
 
 import java.io.Serializable;
+import java.util.Base64;
 import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
 @Table(name="product", schema="gma_db")
 //TODO: @NamedQuery
-@NamedQuery(name="Product.getProduct", query="SELECT x FROM Product x WHERE x = ANY(SELECT y.idP FROM Questionnaire y WHERE y.date=?1)")
+@NamedQuery(name="Product.getTodayProduct", query="SELECT x FROM Product x WHERE x.idP = ?1")
 public class Product implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -51,6 +52,18 @@ public class Product implements Serializable{
 	public void setDescr(String descr) {
 		this.descr = descr;
 	}
+	
+	
+	public byte[] getImage() {
+		return image;
+	}
+	public String getImageData() {
+		return Base64.getMimeEncoder().encodeToString(image);
+	}
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+	
 	
 	
 }

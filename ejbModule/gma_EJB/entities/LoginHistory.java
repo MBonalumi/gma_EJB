@@ -1,7 +1,7 @@
 package gma_EJB.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name="login_history", schema="gma_db")
 //TODO: @NamedQuery
 @IdClass(value = LoginHistoryID.class)
+@NamedQuery(name="LoginHistory.getHistory", query="SELECT x FROM LoginHistory x WHERE x.idU=?1")
 public class LoginHistory implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -19,7 +20,9 @@ public class LoginHistory implements Serializable {
 	private User idU;
 	@Id
 	@Column(name="ts", nullable=false)
-	private Timestamp ts;
+	@Basic
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date ts;
 	
 	
 	//constructor
@@ -35,10 +38,10 @@ public class LoginHistory implements Serializable {
 	public void setIdU(User idU) {
 		this.idU = idU;
 	}
-	public Timestamp getTs() {
+	public Date getTs() {
 		return ts;
 	}
-	public void setTs(Timestamp ts) {
+	public void setTs(Date ts) {
 		this.ts = ts;
 	}
 }

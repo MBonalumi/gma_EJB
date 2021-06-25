@@ -1,12 +1,15 @@
 package gma_EJB.entities;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 import javax.persistence.*;
 
 @Entity
 @Table(name="questionnaire", schema="gma_db")
+@NamedQueries({
+	@NamedQuery(name="Questionnaire.getToday", query="SELECT x FROM Questionnaire x WHERE x.date=CURRENT_DATE")
+})
 public class Questionnaire implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -16,6 +19,8 @@ public class Questionnaire implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idQ;
 	@Column(name="date", nullable=false)
+	@Basic
+	@Temporal(TemporalType.DATE)
 	private Date date;
 	private String title="title";
 	@ManyToOne

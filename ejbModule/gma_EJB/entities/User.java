@@ -7,8 +7,11 @@ import javax.persistence.*;
 @Entity
 @Table(name="user", schema="gma_db")
 //TODO: @NamedQuery
-@NamedQuery(name="User.checkCredentials", query="SELECT x FROM User x WHERE x.username = ?1 AND x.psw = ?2")
-
+@NamedQueries({
+	@NamedQuery(name="User.checkCredentials", query="SELECT x FROM User x WHERE x.username = ?1 AND x.psw = ?2") ,
+	@NamedQuery(name="User.getUser", query="SELECT x FROM User x WHERE x.username = ?1"),
+	@NamedQuery(name="User.getUsers", query="SELECT x FROM User x")
+})
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
