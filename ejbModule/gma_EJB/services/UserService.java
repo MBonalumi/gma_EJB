@@ -16,9 +16,6 @@ public class UserService {
 	
 	public UserService() {}
 	
-	@EJB(name = "gma_EJB.services/ProductService")
-	gma_EJB.services.ProductService prodS;
-	
 	/*
 	 * RETURN:
 	 * 		User	if checked correctly
@@ -32,8 +29,6 @@ public class UserService {
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't check credentials");
 		}
-		
-		System.out.println(prodS.getTodayProduct().getDescr());
 		
 		if(users.isEmpty())
 			return null;

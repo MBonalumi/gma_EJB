@@ -1,13 +1,8 @@
 package gma_EJB.services;
 
-import java.util.Date;
-
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.*;
-
 import gma_EJB.entities.Product;
-import gma_EJB.entities.Questionnaire;
 
 @Stateless
 public class ProductService {
@@ -16,15 +11,11 @@ public class ProductService {
 	
 	public ProductService() {}
 	
-	@EJB(name = "gma_EJB.services/QuestionnaireService")
-	QuestionnaireService questS;
-	
-	public Product getTodayProduct() throws Exception {
-		Questionnaire quest = questS.getToday();
+	public Product getProduct(int idP) throws Exception {
 		Product product = null;
 
 		try {
-			product = em.createNamedQuery("Product.getTodayProduct", Product.class).setParameter(1, quest.getIdP().getIdP())
+			product = em.createNamedQuery("Product.getTodayProduct", Product.class).setParameter(1, idP)
 					.getSingleResult();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't retrieve product information");
