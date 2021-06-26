@@ -23,7 +23,7 @@ public class ReviewService {
 			reviews = em.createNamedQuery("Review.getReviews", Review.class).setParameter(1, idP)
 					.getResultList();
 		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't check credentials");
+			throw new Exception("Database error! can't get product reviews");
 		}
 		
 		return reviews;

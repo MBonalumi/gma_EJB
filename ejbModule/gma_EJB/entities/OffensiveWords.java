@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="offensive_words", schema="gma_db")
+@NamedQuery(name="OffensiveWords.getWords", query="SELECT x FROM OffensiveWords x")
 public class OffensiveWords implements Serializable{
 	private static final long serialVersionUID = 1L;
 

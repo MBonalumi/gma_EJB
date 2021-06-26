@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Entity
 @Table(name="mkt_answer", schema="gma_db")
 @IdClass(value = MktAnswerID.class)
+@NamedQuery(name="MktAnswer.getFromQuestionAndUser", query="SELECT x FROM MktAnswer x WHERE x.idM=?1 AND x.idU=?2")
 public class MktAnswer implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

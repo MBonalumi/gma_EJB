@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name="login_history", schema="gma_db")
 //TODO: @NamedQuery
