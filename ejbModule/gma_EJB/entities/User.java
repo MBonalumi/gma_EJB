@@ -28,6 +28,7 @@ public class User implements Serializable{
 	private Boolean ban=false;
 	private int points=0;
 	
+	//TODO: MUST IMPLEMENT addLogin(LoginHistory l), removeLogin(LoginHistory l) et cetera
 	
 	//other attributes
 	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
@@ -36,6 +37,7 @@ public class User implements Serializable{
 	Collection<MktAnswer> mktAnswers;
 	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<StatAnswers> statAnswers;
+	
 	
 	
 	//constructor
