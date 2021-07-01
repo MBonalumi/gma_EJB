@@ -17,17 +17,17 @@ public class StatAnswersService {
 	/*
 	 * 
 	 */
-	public StatAnswers getLastAnswers(User u) throws Exception {
-		StatAnswers statA = null;
-		try {
-			statA = em.createNamedQuery("StatAnswers.getLastFromUser", StatAnswers.class).setParameter(1, u)
-					.getSingleResult();
-		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't retrieve last stat answers");
-		}
-		
-		return statA;
-	}
+//	public StatAnswers getLastAnswers(User u) throws Exception {
+//		StatAnswers statA = null;
+//		try {
+//			statA = em.createNamedQuery("StatAnswers.getLastFromUser", StatAnswers.class).setParameter(1, u)
+//					.getSingleResult();
+//		}catch(PersistenceException e) {
+//			throw new Exception("Database error! Can't retrieve last stat answers");
+//		}
+//		
+//		return statA;
+//	}
 	
 	/*
 	 * 

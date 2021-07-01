@@ -41,6 +41,8 @@ public class LoginHistoryService {
 		LoginHistory l = new LoginHistory();
 		l.setIdU(u);
 		l.setTs(new Date());
+		// nope u.addLogin(l);
 		em.persist(l);
+	
 	}	
 }
