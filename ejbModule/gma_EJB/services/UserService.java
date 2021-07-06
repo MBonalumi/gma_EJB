@@ -142,7 +142,7 @@ public class UserService {
 	}*/
 	public void ban(User u) {
 		u.setBan(true);
-		em.flush();
+		em.merge(u);
 	}
 	
 	/*
