@@ -124,7 +124,7 @@ public class UserService {
 	/*
 	 * at the end user _username_ is banned
 	 */
-	public void ban(String username) throws Exception{
+	/*public void ban(String username) throws Exception{
 		List<User> users = null;
 		try {
 			users = em.createNamedQuery("User.getUser", User.class)
@@ -139,6 +139,10 @@ public class UserService {
 		}
 		
 		users.get(0).setBan(true);
+	}*/
+	public void ban(User u) {
+		u.setBan(true);
+		em.flush();
 	}
 	
 	/*

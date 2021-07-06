@@ -2,6 +2,8 @@ package gma_EJB.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,8 +27,12 @@ public class User implements Serializable{
 	private String email;
 	@Column(name="psw", nullable=false)
 	private String psw;
+	@Column(name="ban", nullable=false)
 	private Boolean ban=false;
 	private int points=0;
+	
+	@Transient
+	private Date ts; 
 	
 	//TODO: MUST IMPLEMENT addLogin(LoginHistory l), removeLogin(LoginHistory l) et cetera
 	
@@ -82,5 +88,7 @@ public class User implements Serializable{
 		this.points = points;
 	}
 	
-	
+	public void addLogin() {
+		this.ts = new Date();
+	}
 }
