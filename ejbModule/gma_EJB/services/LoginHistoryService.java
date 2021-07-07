@@ -37,10 +37,10 @@ public class LoginHistoryService {
 	/*
 	 * adds actual timestamp as login time
 	 */
-	public void addLoginTimestamp(User u) {
+	public void addLoginTimestamp(User u,Date d) {
 		LoginHistory l = new LoginHistory();
 		l.setIdU(u);
-		l.setTs(new Date());
+		l.setTs(d);
 		// nope u.addLogin(l);
 		em.persist(l);
 	

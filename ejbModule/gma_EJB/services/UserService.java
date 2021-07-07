@@ -62,7 +62,7 @@ public class UserService {
 		//NB: in Album Example he checked for the user to be unique but field username is unique in our DB, so useless
 		
 		//before returning, the login timestamp is added in LoginHistory
-		lServ.addLoginTimestamp(users.get(0));
+		//lServ.addLoginTimestamp(users.get(0));
 		
 		return users.get(0);
 	}
