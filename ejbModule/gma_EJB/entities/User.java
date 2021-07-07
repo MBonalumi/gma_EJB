@@ -12,7 +12,8 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name="User.checkCredentials", query="SELECT x FROM User x WHERE x.username = ?1 AND x.psw = ?2") ,
 	@NamedQuery(name="User.getUser", query="SELECT x FROM User x WHERE x.username = ?1"),
-	@NamedQuery(name="User.getUsers", query="SELECT x FROM User x")
+	@NamedQuery(name="User.getUsers", query="SELECT x FROM User x"),
+	@NamedQuery(name="User.getUsersRanking",query="SELECT x FROM User x ORDER BY x.points DESC")
 })
 public class User implements Serializable{
 	private static final long serialVersionUID = 1L;

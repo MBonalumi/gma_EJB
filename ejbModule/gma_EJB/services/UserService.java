@@ -159,6 +159,18 @@ public class UserService {
 		
 		return users;
 	}
+	public List<User> getUsersRanking() throws Exception {
+		List<User> users = null;
+		try {
+			users = em.createNamedQuery("User.getUsersRanking", User.class)
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't check credentials");
+		}
+		
+		return users;
+	}
+	
 }
 
 
