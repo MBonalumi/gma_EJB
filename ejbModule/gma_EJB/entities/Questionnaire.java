@@ -8,7 +8,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="questionnaire", schema="gma_db")
 @NamedQueries({
-	@NamedQuery(name="Questionnaire.getToday", query="SELECT x FROM Questionnaire x WHERE x.date=CURRENT_DATE")
+	@NamedQuery(name="Questionnaire.getToday", query="SELECT x FROM Questionnaire x WHERE x.date=CURRENT_DATE"),
+	@NamedQuery(name="Questionnaire.getByDate", query="SELECT x FROM Questionnaire x WHERE x.date=?1")
 })
 public class Questionnaire implements Serializable{
 	private static final long serialVersionUID = 1L;

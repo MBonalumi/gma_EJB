@@ -35,6 +35,27 @@ public class QuestionnaireService {
 	}
 	
 	/*
+	 * gets questionnaire by date
+	 * must be called with year, month, day
+	 */
+	public Questionnaire getByDate(int year, int month, int day) throws NoQuestionnaireTodayException {
+		return getByDate(new Date(year-1900, month-1, day));
+	}
+	public Questionnaire getByDate(Date date) throws NoQuestionnaireTodayException {
+		Questionnaire q = null;
+		
+		try {
+			q = em.createNamedQuery("Questionnaire.getByDate", Questionnaire.class)
+					.setParameter(1, date)
+					.getSingleResult();
+		}catch(PersistenceException e) {
+			throw new NoQuestionnaireTodayException("No questionnaires happened on the provided date.");
+		}
+		
+		return q;
+	}
+	
+	/*
 	 * adds new questionnaire
 	 */
 	public void addQuestionnaire(Date date, String title, Product p) {

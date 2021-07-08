@@ -11,6 +11,7 @@
 		<class>gma_EJB.entities.Review</class>
 		<class>gma_EJB.entities.StatAnswers</class>
 		<class>gma_EJB.entities.User</class>
+		<class>gma_EJB.entities.Admin</class>
 		<properties>
 			<property name="eclipselink.logging.level" value="FINE"/>
 		</properties>

@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
+import gma_EJB.entities.Admin;
 import gma_EJB.entities.Questionnaire;
 import gma_EJB.entities.User;
 
@@ -32,7 +33,7 @@ public class UserService {
 //	@EJB(name="gma_EJB.services/OffensiveWordsService")
 //	OffensiveWordsService wServ;
 //	@EJB(name="gma_EJB.services/StatAnswersService")
-//	StatAnswersService sServ;
+//	StatAnswersService sServ;	
 	
 	/*
 	 * RETURN:
@@ -40,29 +41,28 @@ public class UserService {
 	 * 		null	otherwises
 	 */
 	public User checkCredentials(String user, String psw) throws Exception {	//TODO: throws exceptions?
+	
+		/*
+		 * -----DEBUG-----
+		 */
+//		Questionnaire q1 = null;
+		// ---------------
+		
 		List<User> users = null;
 		try {
 			users = em.createNamedQuery("User.checkCredentials", User.class).setParameter(1, user).setParameter(2, psw)
 					.getResultList();
+//			q1 = em.createNamedQuery("Questionnaire.getByDate", Questionnaire.class)
+//					.setParameter(1, new Date(121, 6, 8))
+//					.getSingleResult();
+			
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't check credentials");
 		}
 		
-		/*
-		 * -----DEBUG-----
-		 */
-//		System.out.println(pServ.getProductByDate(new Date(2021,06,11)));
-//		System.out.println(rServ.getReviews(1).get(0).getText());
-//		System.out.println(wServ.getOffensiveWords());
-//		Questionnaire q = qServ.getToday();
-//		sServ.addStatAnswers(users.get(0), q, 1, 23, 1);
-		
 		if(users.isEmpty())
 			return null;
 		//NB: in Album Example he checked for the user to be unique but field username is unique in our DB, so useless
-		
-		//before returning, the login timestamp is added in LoginHistory
-		//lServ.addLoginTimestamp(users.get(0));
 		
 		return users.get(0);
 	}

@@ -37,8 +37,6 @@ public class User implements Serializable{
 	@Transient
 	private Boolean hasAnsweredToday=false;
 	
-	//TODO: MUST IMPLEMENT addLogin(LoginHistory l), removeLogin(LoginHistory l) et cetera
-	
 	//other attributes
 	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
 	Collection<LoginHistory> logins;
