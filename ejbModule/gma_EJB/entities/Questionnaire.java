@@ -29,9 +29,9 @@ public class Questionnaire implements Serializable{
 	
 	
 	//other attr (jpa FK)
-	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	
 	Collection<MktQuestion> mktQuestions;
-	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	
 	Collection<StatAnswers> statAnswers;
 	
 	

@@ -23,7 +23,7 @@ public class MktQuestion implements Serializable{
 	
 	
 	//other attr
-	@OneToMany(mappedBy="idM")
+	@OneToMany(mappedBy="idM", cascade=CascadeType.ALL, orphanRemoval=true)
 	Collection<MktAnswer> answers;
 	
 	
