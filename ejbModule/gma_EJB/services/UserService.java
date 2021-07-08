@@ -154,7 +154,7 @@ public class UserService {
 			users = em.createNamedQuery("User.getUsers", User.class)
 					.getResultList();
 		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't check credentials");
+			throw new Exception("Database error! Can't get users");
 		}
 		
 		return users;
@@ -163,10 +163,12 @@ public class UserService {
 		List<User> users = null;
 		try {
 			users = em.createNamedQuery("User.getUsersRanking", User.class)
+					.setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't check credentials");
+			throw new Exception("Database error! Can't get rankings");
 		}
+		//em.refresh(users);
 		
 		return users;
 	}
