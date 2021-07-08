@@ -34,6 +34,8 @@ public class User implements Serializable{
 	
 	@Transient
 	private Date ts; 
+	@Transient
+	private Boolean hasAnsweredToday=false;
 	
 	//TODO: MUST IMPLEMENT addLogin(LoginHistory l), removeLogin(LoginHistory l) et cetera
 	
@@ -95,5 +97,11 @@ public class User implements Serializable{
 	
 	public Date getLogin() {
 		return ts;
+	}
+	public Boolean getHasAnsweredToday() {
+		return hasAnsweredToday;
+	}
+	public void setHasAnsweredToday(Boolean hasAnsweredToday) {
+		this.hasAnsweredToday = hasAnsweredToday;
 	}
 }
