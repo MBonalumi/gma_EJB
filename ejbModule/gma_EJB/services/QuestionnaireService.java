@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import gma_EJB.entities.Product;
 import gma_EJB.entities.Questionnaire;
+import gma_EJB.exceptions.NoQuestionnaireTodayException;
 
 @Stateless
 public class QuestionnaireService {
@@ -18,21 +19,17 @@ public class QuestionnaireService {
 	/*
 	 * retrieves today's quest.
 	 */
-	public Questionnaire getToday() throws Exception {
+	public Questionnaire getToday() throws NoQuestionnaireTodayException {
 		Questionnaire quest = null;
 
-		if(em == null)
-			System.out.println("bo");
 		
 		try {
 			quest = em.createNamedQuery("Questionnaire.getToday", Questionnaire.class)
 					.getSingleResult();
 		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't retrieve today's questionnaire");
+			throw new NoQuestionnaireTodayException("No questionnaires for today.");
 		}
 		
-		if(quest == null)
-			throw new Exception("Error! No questionnaire on this date");
 		
 		return quest;
 	}
