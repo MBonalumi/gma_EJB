@@ -10,8 +10,8 @@ import javax.persistence.*;
 //TODO: @NamedQuery
 @NamedQueries({
 	@NamedQuery(name="Product.getById", query="SELECT x FROM Product x WHERE x.idP = ?1"),
-	@NamedQuery(name="Product.getByDate", query="SELECT x FROM Product x, Questionnaire y WHERE y.idP=x AND y.date=?1")
-	
+	@NamedQuery(name="Product.getByDate", query="SELECT x FROM Product x, Questionnaire y WHERE y.idP=x AND y.date=?1"),
+	@NamedQuery(name="Product.getProducts", query="SELECT x FROM Product x")
 })
 public class Product implements Serializable{
 	private static final long serialVersionUID = 1L;

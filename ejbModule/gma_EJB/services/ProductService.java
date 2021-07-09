@@ -1,10 +1,12 @@
 package gma_EJB.services;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import gma_EJB.entities.Product;
+import gma_EJB.entities.User;
 
 @Stateless
 public class ProductService {
@@ -46,5 +48,17 @@ public class ProductService {
 		prod.setDescr(descr);
 		prod.setImage(image);
 		em.persist(prod);
+	}
+	
+	public List<Product> getProducts() throws Exception {
+		List<Product> products = null;
+		try {
+			products = em.createNamedQuery("Product.getProducts", Product.class)
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't get products");
+		}
+		
+		return products;
 	}
 }
