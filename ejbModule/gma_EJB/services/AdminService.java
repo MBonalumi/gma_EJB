@@ -1,6 +1,8 @@
 package gma_EJB.services;
 
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
@@ -14,16 +16,19 @@ public class AdminService {
 	public AdminService() {}
 	
 	public Admin checkCredentials(String user, String psw) throws Exception {
-		Admin admin = null;
+		List<Admin> admins = null;
 		try {
-			admin = em.createNamedQuery("Admin.checkCredentials", Admin.class)
+			admins = em.createNamedQuery("Admin.checkCredentials", Admin.class)
 					.setParameter(1, user).setParameter(2, psw)
-					.getSingleResult();
+					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't check admin credentials");
 		}
 		
-		return admin;
+		if(admins.isEmpty())
+			return null;
+		
+		return admins.get(0);
 	}
 	
 }
