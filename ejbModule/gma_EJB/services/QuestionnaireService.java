@@ -63,12 +63,13 @@ public class QuestionnaireService {
 	/*
 	 * adds new questionnaire
 	 */
-	public void addQuestionnaire(Date date, String title, Product p) {
+	public Questionnaire addQuestionnaire(Date date, String title, Product p) {
 		Questionnaire q = new Questionnaire();
 		q.setDate(date);
 		q.setIdP(p);
 		q.setTitle(title);
 		em.persist(q);
+		return q;
 	}
 	
 	public List<Questionnaire> getQuestionnaires() throws Exception {

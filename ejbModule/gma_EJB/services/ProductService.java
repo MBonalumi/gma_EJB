@@ -42,12 +42,13 @@ public class ProductService {
 		return product;
 	}
 	
-	public void addProduct(String name, String descr, byte[] image) throws Exception {
+	public Product addProduct(String name, String descr, byte[] image) throws Exception {
 		Product prod = new Product();
 		prod.setName(name);
 		prod.setDescr(descr);
 		prod.setImage(image);
 		em.persist(prod);
+		return prod;
 	}
 	
 	public List<Product> getProducts() throws Exception {
