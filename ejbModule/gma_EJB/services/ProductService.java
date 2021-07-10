@@ -61,4 +61,15 @@ public class ProductService {
 		
 		return products;
 	}
+	
+	public List<Product> getProductsOrdered() throws Exception {
+		List<Product> products = null;
+		try {
+			products = em.createNamedQuery("Product.getProductsOrdered", Product.class)
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't get products");
+		}	
+		return products;
+	}
 }

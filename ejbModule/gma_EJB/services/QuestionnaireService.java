@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import gma_EJB.entities.Product;
 import gma_EJB.entities.Questionnaire;
+import gma_EJB.entities.User;
 import gma_EJB.exceptions.NoQuestionnaireTodayException;
 
 @Stateless
@@ -19,6 +20,10 @@ public class QuestionnaireService {
 	/*
 	 * retrieves today's quest.
 	 */
+	public Questionnaire findQuestionnaire(int id) {
+		Questionnaire q = em.find(Questionnaire.class, id);
+		return q;
+	}
 	public Questionnaire getToday() throws NoQuestionnaireTodayException {
 		Questionnaire quest = null;
 
@@ -65,4 +70,26 @@ public class QuestionnaireService {
 		q.setTitle(title);
 		em.persist(q);
 	}
+	
+	public List<Questionnaire> getQuestionnaires() throws Exception {
+		List<Questionnaire> quest = null;
+		try {
+			quest = em.createNamedQuery("Questionnaire.getQuestionnaires", Questionnaire.class)
+					.setHint("javax.persistence.cache.storeMode", "REFRESH")
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't get questionnaires");
+		}
+		//em.refresh(users);
+		
+		return quest;
+	}
+	
+	public Questionnaire deleteQuestionnaire(int id) {
+		Questionnaire q = em.find(Questionnaire.class, id);
+		if (q == null)
+			return null;
+		em.remove(q);
+		return q;
+	}	
 }
