@@ -2,6 +2,7 @@ package gma_EJB.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Collection;
 import javax.persistence.*;
 
@@ -31,10 +32,12 @@ public class Questionnaire implements Serializable{
 	
 	
 	//other attr (jpa FK)
+	/*
 	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	
-	Collection<MktQuestion> mktQuestions;
-	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	
-	Collection<StatAnswers> statAnswers;
+	List<MktQuestion> mktQuestions;
+	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	
+	List<StatAnswers> statAnswers;
+	*/
 	
 	
 	//constructor
@@ -66,5 +69,20 @@ public class Questionnaire implements Serializable{
 	public void setIdP(Product idP) {
 		this.idP = idP;
 	}
-	
+
+
+	/*
+	public List<MktQuestion> getMktQuestions() {
+		return mktQuestions;
+	}
+	public void setMktQuestions(List<MktQuestion> mktQuestions) {
+		this.mktQuestions = mktQuestions;
+	}
+	public List<StatAnswers> getStatAnswers() {
+		return statAnswers;
+	}
+	public void setStatAnswers(List<StatAnswers> statAnswers) {
+		this.statAnswers = statAnswers;
+	}
+	*/
 }

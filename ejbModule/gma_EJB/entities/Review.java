@@ -38,6 +38,7 @@ public class Review implements Serializable{
 		this.text = text;
 	}
 	public Product getIdP() {
+		System.out.println("ciao_review");
 		return idP;
 	}
 	public void setIdP(Product idP) {

@@ -1,5 +1,7 @@
 package gma_EJB.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
@@ -32,6 +34,21 @@ public class MktAnswerService {
 					.getSingleResult();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't retrieve mkt answer! Can be that two values for mktquestion and user exist in the database");
+		}
+		
+		return a;
+	}
+	
+	/*
+	 * all answers for a question
+	 */
+	public List<MktAnswer> getMktAnswers(MktQuestion m) throws Exception {
+		List<MktAnswer> a = null;
+		try {
+			a = em.createNamedQuery("MktAnswer.getAllFromQuestion", MktAnswer.class).setParameter(1, m)
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't retrieve mkt answers for the given questionnaire! ");
 		}
 		
 		return a;

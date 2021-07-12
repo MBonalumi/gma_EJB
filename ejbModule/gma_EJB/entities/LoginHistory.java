@@ -10,7 +10,11 @@ import javax.persistence.*;
 @Table(name="login_history", schema="gma_db")
 //TODO: @NamedQuery
 @IdClass(value = LoginHistoryID.class)
-@NamedQuery(name="LoginHistory.getHistory", query="SELECT x FROM LoginHistory x WHERE x.idU=?1")
+@NamedQueries({
+	@NamedQuery(name="LoginHistory.getHistory", query="SELECT x FROM LoginHistory x WHERE x.idU=?1 "),
+	@NamedQuery(name="LoginHistory.getCancelList", query="SELECT x FROM LoginHistory x WHERE x.idQ=?1 ")
+	
+})
 public class LoginHistory implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -24,7 +28,9 @@ public class LoginHistory implements Serializable {
 	@Basic
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ts;
-	
+	@ManyToOne
+	@JoinColumn(name="idQ")
+	private Questionnaire idQ;
 	
 	//constructor
 	public LoginHistory() {

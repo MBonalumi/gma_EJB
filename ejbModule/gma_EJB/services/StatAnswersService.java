@@ -1,8 +1,11 @@
 package gma_EJB.services;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
+import gma_EJB.entities.MktAnswer;
 import gma_EJB.entities.Questionnaire;
 import gma_EJB.entities.StatAnswers;
 import gma_EJB.entities.User;
@@ -40,6 +43,18 @@ public class StatAnswersService {
 		statA.setAge(age);
 		statA.setExpertise(expertise);
 		em.persist(statA);
+	}
+	
+	public List<StatAnswers> getAllAnswers(Questionnaire q) throws Exception{
+		List<StatAnswers> s = null;
+		try {
+			s = em.createNamedQuery("StatAnswers.getAllFromQuestionnaire", StatAnswers.class).setParameter(1, q)
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't retrieve stat answers!");
+		}
+		
+		return s;
 	}
 	
 }

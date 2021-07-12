@@ -3,6 +3,7 @@ package gma_EJB.entities;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -38,12 +39,14 @@ public class User implements Serializable{
 	private Boolean hasAnsweredToday=false;
 	
 	//other attributes
-	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	Collection<LoginHistory> logins;
-	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	Collection<MktAnswer> mktAnswers;
-	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	Collection<StatAnswers> statAnswers;
+	/*
+	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	List<LoginHistory> logins;
+	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	List<MktAnswer> mktAnswers;
+	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	List<StatAnswers> statAnswers;
+	*/
 	
 	
 	

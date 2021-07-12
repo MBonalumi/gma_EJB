@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import gma_EJB.entities.LoginHistory;
+import gma_EJB.entities.Questionnaire;
 import gma_EJB.entities.User;
 
 
@@ -32,6 +33,21 @@ public class LoginHistoryService {
 		loginHistory.forEach(x -> {history.add( ((LoginHistory) x).getTs() ); });
 		
 		return history;
+	}
+	
+	/*
+	 * returns a list of timestamps
+	 */
+	public List<LoginHistory> getCancelList(Questionnaire q) throws Exception {
+		List<LoginHistory> loginHistory = null;
+		try {
+			loginHistory = em.createNamedQuery("LoginHistory.getCancelList", LoginHistory.class).setParameter(1, q)
+					.getResultList();
+		}catch(PersistenceException e) {
+			throw new Exception("Database error! Can't get logins history");
+		}
+		
+		return loginHistory;
 	}
 	
 	/*

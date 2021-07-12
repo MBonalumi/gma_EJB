@@ -2,7 +2,7 @@ package gma_EJB.entities;
 
 import java.io.Serializable;
 import java.util.Base64;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -28,11 +28,12 @@ public class Product implements Serializable{
 	
 	
 	//other attributes (jpa, FK)
-	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	Collection<Review> reviews;
-	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	Collection<Questionnaire> questionnaires;
-	
+	/*
+	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	List<Review> reviews;
+	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
+	List<Questionnaire> questionnaires;
+	*/
 	
 	//constructor
 	public Product() {}
@@ -68,7 +69,20 @@ public class Product implements Serializable{
 	public void setImage(byte[] image) {
 		this.image = image;
 	}
-	
-	
-	
+
+	/*
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
+		System.out.println("ciao");
+	}
+	public List<Questionnaire> getQuestionnaires() {
+		return questionnaires;
+	}
+	public void setQuestionnaires(List<Questionnaire> questionnaires) {
+		this.questionnaires = questionnaires;
+	}
+	*/
 }

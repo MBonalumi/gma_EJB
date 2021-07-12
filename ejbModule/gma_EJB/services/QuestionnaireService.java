@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
+import gma_EJB.entities.MktQuestion;
 import gma_EJB.entities.Product;
 import gma_EJB.entities.Questionnaire;
 import gma_EJB.entities.User;
@@ -59,6 +60,17 @@ public class QuestionnaireService {
 		
 		return q;
 	}
+	
+	/*
+	 * get questions from questionnaire
+	 */
+	/*
+	public List<MktQuestion> getMktQuestions(Questionnaire q) {
+		Questionnaire q1 = em.find(Questionnaire.class, q.getIdQ());
+		return q1.getMktQuestions();
+	}
+	*/
+	
 	
 	/*
 	 * adds new questionnaire
