@@ -31,6 +31,10 @@ public class MktQuestionService {
 		return questions;
 	}
 	
+	public MktQuestion findMktQuestion(int id) {
+		MktQuestion q = em.find(MktQuestion.class, id);
+		return q;
+	}
 	/*
 	 * adds a new question specifying the Questionnaire
 	 */
