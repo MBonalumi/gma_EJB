@@ -30,7 +30,7 @@ public class QuestionnaireService {
 
 		
 		try {
-			quest = em.createNamedQuery("Questionnaire.getToday", Questionnaire.class)
+			quest = em.createNamedQuery("Questionnaire.getToday", Questionnaire.class).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getSingleResult();
 		}catch(PersistenceException e) {
 			throw new NoQuestionnaireTodayException("No questionnaires for today.");
