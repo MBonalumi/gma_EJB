@@ -37,6 +37,8 @@ public class Questionnaire implements Serializable{
 	List<MktQuestion> mktQuestions;
 	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	
 	List<StatAnswers> statAnswers;
+	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	
+	List<LoginHistory> loginHistory;
 	/**/
 	
 	
