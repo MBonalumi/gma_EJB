@@ -51,4 +51,10 @@ public class LoginHistory implements Serializable {
 	public void setTs(Date ts) {
 		this.ts = ts;
 	}
+	public Questionnaire getIdQ() {
+		return idQ;
+	}
+	public void setIdQ(Questionnaire idQ) {
+		this.idQ = idQ;
+	}
 }

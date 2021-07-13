@@ -53,10 +53,11 @@ public class LoginHistoryService {
 	/*
 	 * adds actual timestamp as login time
 	 */
-	public void addLoginTimestamp(User u,Date d) {
+	public void addLoginTimestamp(User u, Date d, Questionnaire q) {
 		LoginHistory l = new LoginHistory();
 		l.setIdU(u);
 		l.setTs(d);
+		l.setIdQ(q);
 		// nope u.addLogin(l);
 		em.persist(l);
 	
