@@ -1,14 +1,11 @@
 package gma_EJB.services;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
-import gma_EJB.entities.Admin;
-import gma_EJB.entities.Questionnaire;
 import gma_EJB.entities.User;
 
 @Stateless
@@ -20,20 +17,6 @@ public class UserService {
 	LoginHistoryService lServ;
 	
 	public UserService() {}
-	
-	/*
-	 * -----DEBUG-----
-	 */
-//	@EJB(name="gma_EJB.services/ReviewService")
-//	ReviewService rServ;
-//	@EJB(name="gma_EJB.services/QuestionnaireService")
-//	QuestionnaireService qServ;
-//	@EJB(name="gma_EJB.services/ProductService")
-//	ProductService pServ;
-//	@EJB(name="gma_EJB.services/OffensiveWordsService")
-//	OffensiveWordsService wServ;
-//	@EJB(name="gma_EJB.services/StatAnswersService")
-//	StatAnswersService sServ;	
 	
 	/*
 	 * RETURN:
@@ -52,18 +35,12 @@ public class UserService {
 		try {
 			users = em.createNamedQuery("User.checkCredentials", User.class).setParameter(1, user).setParameter(2, psw)
 					.getResultList();
-//			q1 = em.createNamedQuery("Questionnaire.getByDate", Questionnaire.class)
-//					.setParameter(1, new Date(121, 6, 8))
-//					.getSingleResult();
-			
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't check credentials");
 		}
 		
 		if(users.isEmpty())
 			return null;
-		//NB: in Album Example he checked for the user to be unique but field username is unique in our DB, so useless
-		
 		return users.get(0);
 	}
 	
@@ -120,45 +97,12 @@ public class UserService {
 		
 		return 0;
 	}
-	
-	/*
-	 * at the end user _username_ is banned
-	 */
-	/*public void ban(String username) throws Exception{
-		List<User> users = null;
-		try {
-			users = em.createNamedQuery("User.getUser", User.class)
-					.setParameter(1, username)
-					.getResultList();
-		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't check credentials");
-		}
-		
-		if(users.isEmpty()) {
-			throw new Exception("Error! Trying to ban non-existing user");
-		}
-		
-		users.get(0).setBan(true);
-	}*/
+
 	public void ban(User u) {
 		u.setBan(true);
 		em.merge(u);
 	}
-	
-	/*
-	 * 
-	 */
-	/*public List<User> getciao() throws Exception {
-		List<User> users = null;
-		try {
-			users = em.createNamedQuery("User.getUsers", User.class)
-					.getResultList();
-		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't get users");
-		}
-		
-		return users;
-	}*/
+
 	public List<User> getUsersRanking() throws Exception {
 		List<User> users = null;
 		try {

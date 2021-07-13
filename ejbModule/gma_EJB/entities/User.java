@@ -1,9 +1,7 @@
 package gma_EJB.entities;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.*;
 
@@ -13,7 +11,7 @@ import javax.persistence.*;
 @NamedQueries({
 	@NamedQuery(name="User.checkCredentials", query="SELECT x FROM User x WHERE x.username = ?1 AND x.psw = ?2") ,
 	@NamedQuery(name="User.getUser", query="SELECT x FROM User x WHERE x.username = ?1"),
-	@NamedQuery(name="User.getUsers", query="SELECT x FROM User x"),
+	//@NamedQuery(name="User.getUsers", query="SELECT x FROM User x"),
 	@NamedQuery(name="User.getUsersRanking",query="SELECT x FROM User x ORDER BY x.points DESC")
 })
 public class User implements Serializable{
@@ -37,18 +35,6 @@ public class User implements Serializable{
 	private Date ts; 
 	@Transient
 	private Boolean hasAnsweredToday=false;
-	
-	//other attributes
-	/*
-	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	List<LoginHistory> logins;
-	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	List<MktAnswer> mktAnswers;
-	@OneToMany(mappedBy="idU", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	List<StatAnswers> statAnswers;
-	*/
-	
-	
 	
 	//constructor
 	public User() {	}

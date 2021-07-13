@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Table(name="questionnaire", schema="gma_db")
 @NamedQueries({
 	@NamedQuery(name="Questionnaire.getToday", query="SELECT x FROM Questionnaire x WHERE x.date=CURRENT_DATE"),
-	@NamedQuery(name="Questionnaire.getByDate", query="SELECT x FROM Questionnaire x WHERE x.date=?1"),
+	//@NamedQuery(name="Questionnaire.getByDate", query="SELECT x FROM Questionnaire x WHERE x.date=?1"),
 	@NamedQuery(name="Questionnaire.getQuestionnaires",query="SELECT x FROM Questionnaire x ORDER BY x.date ASC")
 })
 public class Questionnaire implements Serializable{
@@ -72,7 +72,7 @@ public class Questionnaire implements Serializable{
 		this.idP = idP;
 	}
 
-
+}
 	/*
 	public List<MktQuestion> getMktQuestions() {
 		return mktQuestions;
@@ -87,4 +87,3 @@ public class Questionnaire implements Serializable{
 		this.statAnswers = statAnswers;
 	}
 	*/
-}

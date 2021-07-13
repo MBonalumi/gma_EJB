@@ -1,12 +1,10 @@
 package gma_EJB.services;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import gma_EJB.entities.Product;
-import gma_EJB.entities.User;
 
 @Stateless
 public class ProductService {
@@ -28,20 +26,6 @@ public class ProductService {
 		return product;
 	}
 	
-	//NOT WORKING FOR NOW -> TODO: how to create a java.util.Date from string
-	/*public Product getProductByDate(Date date) throws Exception {
-		Product product = null;
-
-		try {
-			product = em.createNamedQuery("Product.getByDate", Product.class).setParameter(1, date)
-					.getSingleResult();
-		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't retrieve product information");
-		}
-		
-		return product;
-	}*/
-	
 	public Product addProduct(String name, String descr, byte[] image) throws Exception {
 		Product prod = new Product();
 		prod.setName(name);
@@ -50,19 +34,7 @@ public class ProductService {
 		em.persist(prod);
 		return prod;
 	}
-	
-	/*public List<Product> getProducts() throws Exception {
-		List<Product> products = null;
-		try {
-			products = em.createNamedQuery("Product.getProducts", Product.class)
-					.getResultList();
-		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't get products");
-		}
-		
-		return products;
-	}*/
-	
+
 	public List<Product> getProductsOrdered() throws Exception {
 		List<Product> products = null;
 		try {

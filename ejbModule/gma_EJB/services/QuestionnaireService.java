@@ -5,10 +5,8 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
-import gma_EJB.entities.MktQuestion;
 import gma_EJB.entities.Product;
 import gma_EJB.entities.Questionnaire;
-import gma_EJB.entities.User;
 import gma_EJB.exceptions.NoQuestionnaireTodayException;
 
 @Stateless
@@ -39,38 +37,6 @@ public class QuestionnaireService {
 		
 		return quest;
 	}
-	
-	/*
-	 * gets questionnaire by date
-	 * must be called with year, month, day
-	 */
-	public Questionnaire getByDate(int year, int month, int day) throws NoQuestionnaireTodayException {
-		return getByDate(new Date(year-1900, month-1, day));
-	}
-	public Questionnaire getByDate(Date date) throws NoQuestionnaireTodayException {
-		Questionnaire q = null;
-		
-		try {
-			q = em.createNamedQuery("Questionnaire.getByDate", Questionnaire.class)
-					.setParameter(1, date)
-					.getSingleResult();
-		}catch(PersistenceException e) {
-			throw new NoQuestionnaireTodayException("No questionnaires happened on the provided date.");
-		}
-		em.refresh(q);
-		return q;
-	}
-	
-	/*
-	 * get questions from questionnaire
-	 */
-	/*
-	public List<MktQuestion> getMktQuestions(Questionnaire q) {
-		Questionnaire q1 = em.find(Questionnaire.class, q.getIdQ());
-		return q1.getMktQuestions();
-	}
-	*/
-	
 	
 	/*
 	 * adds new questionnaire

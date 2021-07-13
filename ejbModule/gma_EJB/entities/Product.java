@@ -2,7 +2,6 @@ package gma_EJB.entities;
 
 import java.io.Serializable;
 import java.util.Base64;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +9,6 @@ import javax.persistence.*;
 //TODO: @NamedQuery
 @NamedQueries({
 	@NamedQuery(name="Product.getById", query="SELECT x FROM Product x WHERE x.idP = ?1"),
-	@NamedQuery(name="Product.getByDate", query="SELECT x FROM Product x, Questionnaire y WHERE y.idP=x AND y.date=?1"),
-	@NamedQuery(name="Product.getProducts", query="SELECT x FROM Product x"),
 	@NamedQuery(name="Product.getProductsOrdered", query="SELECT x FROM Product x ORDER BY x.name ASC")
 })
 public class Product implements Serializable{
@@ -25,15 +22,6 @@ public class Product implements Serializable{
 	private String descr;
 	@Lob
 	private byte[] image;
-	
-	
-	//other attributes (jpa, FK)
-	/*
-	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	List<Review> reviews;
-	@OneToMany(mappedBy="idP", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.LAZY)	//TODO: maybe need extra parameters --> cascade=CascadeType.ALL, orphanRemoval=true
-	List<Questionnaire> questionnaires;
-	*/
 	
 	//constructor
 	public Product() {}

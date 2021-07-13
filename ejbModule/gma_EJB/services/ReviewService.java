@@ -4,7 +4,6 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 
-import gma_EJB.entities.Product;
 import gma_EJB.entities.Review;
 
 @Stateless
