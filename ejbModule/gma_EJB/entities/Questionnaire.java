@@ -32,12 +32,12 @@ public class Questionnaire implements Serializable{
 	
 	
 	//other attr (jpa FK)
-	/*
+	
 	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true)	
 	List<MktQuestion> mktQuestions;
 	@OneToMany(mappedBy="idQ", cascade=CascadeType.ALL, orphanRemoval=true, fetch=FetchType.EAGER)	
 	List<StatAnswers> statAnswers;
-	*/
+	/**/
 	
 	
 	//constructor

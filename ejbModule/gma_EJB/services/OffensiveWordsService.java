@@ -22,7 +22,7 @@ public class OffensiveWordsService {
 	public List<String> getOffensiveWords() throws Exception {
 		List<OffensiveWords> offWords = null;
 		try {
-			offWords = em.createNamedQuery("OffensiveWords.getWords", OffensiveWords.class)
+			offWords = em.createNamedQuery("OffensiveWords.getWords", OffensiveWords.class).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't get offensive words");

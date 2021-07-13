@@ -48,7 +48,7 @@ public class StatAnswersService {
 	public List<StatAnswers> getAllAnswers(Questionnaire q) throws Exception{
 		List<StatAnswers> s = null;
 		try {
-			s = em.createNamedQuery("StatAnswers.getAllFromQuestionnaire", StatAnswers.class).setParameter(1, q)
+			s = em.createNamedQuery("StatAnswers.getAllFromQuestionnaire", StatAnswers.class).setParameter(1, q).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't retrieve stat answers!");

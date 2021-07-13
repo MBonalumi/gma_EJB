@@ -148,7 +148,7 @@ public class UserService {
 	/*
 	 * 
 	 */
-	public List<User> getUsers() throws Exception {
+	/*public List<User> getciao() throws Exception {
 		List<User> users = null;
 		try {
 			users = em.createNamedQuery("User.getUsers", User.class)
@@ -158,7 +158,7 @@ public class UserService {
 		}
 		
 		return users;
-	}
+	}*/
 	public List<User> getUsersRanking() throws Exception {
 		List<User> users = null;
 		try {

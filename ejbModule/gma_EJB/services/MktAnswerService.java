@@ -30,10 +30,9 @@ public class MktAnswerService {
 	public MktAnswer getMktAnswer(MktQuestion m, User u) throws Exception {
 		MktAnswer a = null;
 		try {
-			a = em.createNamedQuery("MktAnswer.getFromQuestionAndUser", MktAnswer.class).setParameter(1, m).setParameter(2, u)
-					.getSingleResult();
+			a = em.createNamedQuery("MktAnswer.getFromQuestionAndUser", MktAnswer.class).setParameter(1, m).setParameter(2, u).getSingleResult();
 		}catch(PersistenceException e) {
-			throw new Exception("Database error! Can't retrieve mkt answer! Can be that two values for mktquestion and user exist in the database");
+			throw new Exception("Database error! Can't retrieve mkt answer!");
 		}
 		
 		return a;
@@ -45,7 +44,7 @@ public class MktAnswerService {
 	public List<MktAnswer> getMktAnswers(MktQuestion m) throws Exception {
 		List<MktAnswer> a = null;
 		try {
-			a = em.createNamedQuery("MktAnswer.getAllFromQuestion", MktAnswer.class).setParameter(1, m)
+			a = em.createNamedQuery("MktAnswer.getAllFromQuestion", MktAnswer.class).setParameter(1, m).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't retrieve mkt answers for the given questionnaire! ");

@@ -57,7 +57,7 @@ public class QuestionnaireService {
 		}catch(PersistenceException e) {
 			throw new NoQuestionnaireTodayException("No questionnaires happened on the provided date.");
 		}
-		
+		em.refresh(q);
 		return q;
 	}
 	
@@ -93,7 +93,7 @@ public class QuestionnaireService {
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't get questionnaires");
 		}
-		//em.refresh(users);
+		//em.refresh(quest);
 		
 		return quest;
 	}

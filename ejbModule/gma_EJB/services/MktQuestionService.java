@@ -22,7 +22,7 @@ public class MktQuestionService {
 		List<MktQuestion> questions = null;
 		
 		try {
-			questions = em.createNamedQuery("MktQuestion.getQuestionsFromQuestionnaire", MktQuestion.class).setParameter(1, q)
+			questions = em.createNamedQuery("MktQuestion.getQuestionsFromQuestionnaire", MktQuestion.class).setParameter(1, q).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't get marketing questions");

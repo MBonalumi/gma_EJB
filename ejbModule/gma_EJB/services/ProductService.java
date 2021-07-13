@@ -29,7 +29,7 @@ public class ProductService {
 	}
 	
 	//NOT WORKING FOR NOW -> TODO: how to create a java.util.Date from string
-	public Product getProductByDate(Date date) throws Exception {
+	/*public Product getProductByDate(Date date) throws Exception {
 		Product product = null;
 
 		try {
@@ -40,7 +40,7 @@ public class ProductService {
 		}
 		
 		return product;
-	}
+	}*/
 	
 	public Product addProduct(String name, String descr, byte[] image) throws Exception {
 		Product prod = new Product();
@@ -51,7 +51,7 @@ public class ProductService {
 		return prod;
 	}
 	
-	public List<Product> getProducts() throws Exception {
+	/*public List<Product> getProducts() throws Exception {
 		List<Product> products = null;
 		try {
 			products = em.createNamedQuery("Product.getProducts", Product.class)
@@ -61,12 +61,12 @@ public class ProductService {
 		}
 		
 		return products;
-	}
+	}*/
 	
 	public List<Product> getProductsOrdered() throws Exception {
 		List<Product> products = null;
 		try {
-			products = em.createNamedQuery("Product.getProductsOrdered", Product.class)
+			products = em.createNamedQuery("Product.getProductsOrdered", Product.class).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't get products");

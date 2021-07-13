@@ -20,7 +20,7 @@ public class ReviewService {
 	public List<Review> getReviews(int idP) throws Exception {
 		List<Review> reviews = null;
 		try {
-			reviews = em.createNamedQuery("Review.getReviews", Review.class).setParameter(1, idP)
+			reviews = em.createNamedQuery("Review.getReviews", Review.class).setParameter(1, idP).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! can't get product reviews");

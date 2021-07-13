@@ -23,7 +23,7 @@ public class LoginHistoryService {
 	public List<Date> getLoginHistory(User u) throws Exception {
 		List<LoginHistory> loginHistory = null;
 		try {
-			loginHistory = em.createNamedQuery("LoginHistory.getHistory", LoginHistory.class).setParameter(1, u)
+			loginHistory = em.createNamedQuery("LoginHistory.getHistory", LoginHistory.class).setParameter(1, u).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't get logins history");
@@ -41,7 +41,7 @@ public class LoginHistoryService {
 	public List<LoginHistory> getCancelList(Questionnaire q) throws Exception {
 		List<LoginHistory> loginHistory = null;
 		try {
-			loginHistory = em.createNamedQuery("LoginHistory.getCancelList", LoginHistory.class).setParameter(1, q)
+			loginHistory = em.createNamedQuery("LoginHistory.getCancelList", LoginHistory.class).setParameter(1, q).setHint("javax.persistence.cache.storeMode", "REFRESH")
 					.getResultList();
 		}catch(PersistenceException e) {
 			throw new Exception("Database error! Can't get logins history");
