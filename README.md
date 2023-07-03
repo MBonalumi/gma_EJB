@@ -8,7 +8,7 @@ A functionality of filtering swearwords out of compiled questionnaire at submiss
 
 The project comprehends a fullstack implementation, using ThymeLeaf for the frontend.
 
-Also check [Web Implementation Project](https://github.com/Riccardo-AmbrosiniB/gma_WEB) for a full overview.
+Also check the [Web Implementation Project](https://github.com/MBonalumi/gma_WEB) for a full overview.
 
 ---
 
